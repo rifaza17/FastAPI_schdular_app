@@ -1,0 +1,37 @@
+{
+  "family": "arenberg-scheduler-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::157466816226:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::157466816226:role/ecsTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "arenberg-scheduler",
+      "image": "157466816226.dkr.ecr.us-west-2.amazonaws.com/arenberg-scheduler-v1:latest",
+      "essential": true,
+      "environment": [
+        {
+          "name": "ENVIRONMENT",
+          "value": "production"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "DATABASE_URL",
+          "valueFrom": "arn:aws:secretsmanager:us-west-2:157466816226:secret:ArenbergDBSecret"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/arenberg-scheduler",
+          "awslogs-region": "us-west-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "command": ["python", "-m", "app.run_ticker"]
+    }
+  ]
+}
