@@ -1,0 +1,29 @@
+# Python cache & bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Databases & logs
+*.db
+*.sqlite3
+*.log
+*.gz
+
+# Build artifacts
+*.egg-info
+
+# Virtual environments
+.venv/
+venv/
+venv1/
+.venv1/
+
+# Git & configs
+.git
+.gitignore
+
+# Docker related
+Dockerfile
+Dockerrun.aws.json
+

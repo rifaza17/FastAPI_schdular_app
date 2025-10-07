@@ -1,0 +1,27 @@
+# HTTP client
+httpx==0.27.0
+
+# FastAPI + ASGI server
+fastapi==0.110.0
+uvicorn[standard]==0.29.0
+
+# SQLAlchemy async + PostgreSQL dialect
+SQLAlchemy==2.0.29
+asyncpg==0.29.0
+psycopg2-binary==2.9.9   # optional, if you also connect sync
+
+# Task scheduling
+apscheduler==3.10.4
+
+# Data science / ML
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.5.1
+
+# Date handling
+python-dateutil==2.9.0.post0
+
+# Optional if you serialize with orjson/uvicorn speedups
+orjson==3.10.6
+
+boto3
